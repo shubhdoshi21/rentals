@@ -35,7 +35,7 @@ app_license = "mit"
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "rentals/public/scss/website"
 
-# include js, css files in header of web form
+# include js, css files in header of web form - need to tell which doctypes webform you want the js css
 # webform_include_js = {"doctype": "public/js/doctype.js"}
 # webform_include_css = {"doctype": "public/css/doctype.css"}
 
@@ -123,7 +123,10 @@ app_license = "mit"
 # permission_query_conditions = {
 # 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
 # }
-#
+permission_query_conditions = {
+	"Vehicle": "rentals.api.get_permission_query_conditions_for_vehicle",
+}
+
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
 # }
@@ -132,6 +135,10 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
+# in case we dont have access to other apps code, this will help us to run custom logic like setting full name from first last name on the code wihch we dont have (no .py file available)
+
+# "*" means it runs on every doctype change
+
 # doc_events = {
 # 	"*": {
 # 		"on_update": "method",
@@ -139,6 +146,16 @@ app_license = "mit"
 # 		"on_trash": "method"
 # 	}
 # }
+
+# go to todo list doctype and enter new todo
+doc_events = {
+	"ToDo": {
+		"before_insert": "rentals.api.throw_emoji",
+    # can call super() to run parent validations etc.
+		# "on_cancel": "method",
+		# "on_trash": "method"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
@@ -160,6 +177,23 @@ app_license = "mit"
 # 		"rentals.tasks.monthly"
 # 	],
 # }
+
+scheduler_events = {
+	# "weekly": [
+	# 	"rentals.api.sent_payment_reminders"
+	# ],
+  # this has longer timeout than weekly
+	# "weekly_long": [
+	# 	"rentals.tasks.weekly"
+	# ],
+  # sends reminder at 3:30 pn on every wednesday
+  "cron": {
+    "30 15 * * 3" : [
+		  "rentals.api.sent_payment_reminders"
+	  ]
+  },
+}
+
 
 # Testing
 # -------
@@ -250,3 +284,5 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+website_route_rules = [{'from_route': '/portal/<path:app_path>', 'to_route': 'portal'},]
