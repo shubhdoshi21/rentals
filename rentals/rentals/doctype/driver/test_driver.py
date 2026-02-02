@@ -1,8 +1,9 @@
 # Copyright (c) 2026, asdf and Contributors
 # See license.txt
 
-# import frappe
+import frappe
 from frappe.tests import IntegrationTestCase
+from frappe.tests.utils import FrappeTestCase
 
 
 # On IntegrationTestCase, the doctype test records and all
@@ -10,6 +11,24 @@ from frappe.tests import IntegrationTestCase
 # Use these module variables to add/remove to/from that list
 EXTRA_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
+
+class TestDriver(FrappeTestCase):
+	def test_full_name_correctly_set(self):
+		test_driver = frappe.new_doc("Driver")
+		test_driver.first_name = "John"
+		test_driver.last_name = "Doe"
+		test_driver.license_number = "dsfsad"
+		test_driver.save()
+
+		self.assertEqual(test_driver.full_name , "John Doe")
+
+	def test_full_name_correctly_set_when_last_name_not_set(self):
+		test_driver = frappe.new_doc("Driver")
+		test_driver.first_name = "John"
+		test_driver.license_number = "dsfsad"
+		test_driver.save()
+
+		self.assertEqual(test_driver.full_name , "John")
 
 
 
@@ -19,4 +38,19 @@ class IntegrationTestDriver(IntegrationTestCase):
 	Use this class for testing interactions between multiple components.
 	"""
 
-	pass
+	def test_full_name_correctly_set(self):
+		test_driver = frappe.new_doc("Driver")
+		test_driver.first_name = "John"
+		test_driver.last_name = "Doe"
+		test_driver.license_number = "dsfsad"
+		test_driver.save()
+
+		self.assertEqual(test_driver.full_name , "John Doe")
+
+	def test_full_name_correctly_set_when_last_name_not_set(self):
+		test_driver = frappe.new_doc("Driver")
+		test_driver.first_name = "John"
+		test_driver.license_number = "dsfsad"
+		test_driver.save()
+
+		self.assertEqual(test_driver.full_name , "John")

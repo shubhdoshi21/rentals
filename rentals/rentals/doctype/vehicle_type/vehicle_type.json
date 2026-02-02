@@ -1,35 +1,38 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-01-29 10:41:48.615510",
+ "autoname": "prompt",
+ "creation": "2026-02-02 12:26:02.896611",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "standard_rate"
+  "description"
  ],
  "fields": [
   {
-   "fieldname": "standard_rate",
-   "fieldtype": "Float",
-   "label": "Standard Rate"
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "issingle": 1,
  "links": [],
- "modified": "2026-02-02 12:28:00.858442",
+ "modified": "2026-02-02 12:28:08.982713",
  "modified_by": "Administrator",
  "module": "Rentals",
- "name": "Rental Settings",
+ "name": "Vehicle Type",
+ "naming_rule": "Set by user",
  "owner": "Administrator",
  "permissions": [
   {
    "create": 1,
    "delete": 1,
    "email": 1,
+   "export": 1,
    "print": 1,
    "read": 1,
+   "report": 1,
    "role": "System Manager",
    "share": 1,
    "write": 1
