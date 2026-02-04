@@ -1,0 +1,18 @@
+[
+ {
+  "description": "sdfsdfs",
+  "docstatus": 0,
+  "doctype": "Vehicle Type",
+  "is_standard": 1,
+  "modified": "2026-02-02 13:02:28.259564",
+  "name": "Sedan"
+ },
+ {
+  "description": "fsdafss",
+  "docstatus": 0,
+  "doctype": "Vehicle Type",
+  "is_standard": 1,
+  "modified": "2026-02-02 13:02:21.818138",
+  "name": "Hatchback"
+ }
+]

@@ -1,35 +1,27 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "prompt",
- "creation": "2026-02-02 12:26:02.896611",
+ "creation": "2026-02-02 14:03:27.666920",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "description",
-  "is_standard"
+  "field_1"
  ],
  "fields": [
   {
-   "fieldname": "description",
-   "fieldtype": "Small Text",
-   "label": "Description"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_standard",
-   "fieldtype": "Check",
-   "label": "Is Standard?"
+   "fieldname": "field_1",
+   "fieldtype": "Data",
+   "label": "Field 1"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
+ "is_virtual": 1,
  "links": [],
- "modified": "2026-02-02 12:40:19.536384",
+ "modified": "2026-02-02 15:18:05.726997",
  "modified_by": "Administrator",
  "module": "Rentals",
- "name": "Vehicle Type",
- "naming_rule": "Set by user",
+ "name": "My Virtual DocType",
  "owner": "Administrator",
  "permissions": [
   {
